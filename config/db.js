@@ -8,7 +8,6 @@ const connectDB = ()=>{
         useNewUrlParser:true,
         useCreateIndex:true,
         useFindAndModify:false,
-        SUPPRESS_NO_CONFIG_WARNING:true
         
     })
     .then(()=>console.log('MongoDB is Connected'))
