@@ -9,18 +9,31 @@ const auth = require('../middleware/auth');
 
 
 
-// route        GET api/auth
-//desc          Get logged in user
-//access        Private
-router.get('/',auth, async (req,res)=>{
+// // route        GET api/auth
+// //desc          Get logged in user
+// //access        Private
+// router.get('/',auth, async (req,res)=>{
+//     try {
+//         const user = await User.findById(req.user.id).selected('-password');
+//         res.json(user)
+//     } catch (error) {
+//         console.error(error.message)
+//         res.status(500).send('server error');
+//     }
+// })
+
+// @route     GET api/auth
+// @desc      Get logged in user
+// @access    Private
+router.get('/', auth, async (req, res) => {
     try {
-        const user = await User.findById(req.user.id).selected('-password');
-        res.json(user)
-    } catch (error) {
-        console.error(error.message)
-        res.status(500).send('server error');
+      const user = await User.findById(req.user.id).select('-password');
+      res.json(user);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
     }
-})
+  });
 
 // route        POST api/auth
 //desc          Login user
