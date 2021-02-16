@@ -8,15 +8,20 @@ import './App.css';
 
 function App() {
   return (
-    <Fragment>
-      <Navbar/>
-      <div className="container">
-        <switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-        </switch>
-      </div>
-    </Fragment>
+    <Router>
+      <Fragment>
+        <Navbar/>
+        <div className="container">
+          
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+          </Switch>
+          
+        
+        </div>
+      </Fragment>
+    </Router>
 
  
   );
