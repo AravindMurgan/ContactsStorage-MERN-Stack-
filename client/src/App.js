@@ -2,12 +2,13 @@
 import React,{Fragment} from 'react'
 import { Navbar } from './component/layout/Navbar';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
-import Home from './component/pages/Home';
 import About from './component/pages/About';
+import ContactState from './context/contact/contactState;'
 import './App.css';
 
 function App() {
   return (
+    <ContactState>
     <Router>
       <Fragment>
         <Navbar/>
@@ -22,7 +23,7 @@ function App() {
         </div>
       </Fragment>
     </Router>
-
+    </ContactState>
  
   );
 }

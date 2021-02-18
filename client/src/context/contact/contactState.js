@@ -1,5 +1,6 @@
-import React from 'react';
-import ontactContext from './contactContext';
+import React,{useReducer} from 'react';
+import uuid from 'uuid';
+import ContactContext from './contactContext';
 import ContactReducer from './contactReducer';
 
 import {
@@ -15,4 +16,65 @@ import {
     CONTACT_ERROR
 } from '../type';
 
+const contactState = (props)=>{
+    const initialState = {
+        contacts:[
+            {
+                id:1,
+                name:'Aravind',
+                email:'arvind@gmail.com',
+                phone:'5454566566',
+                type:'personal'
+            },
+            {
+                id:2,
+                name:'Ram',
+                email:'Ram@gmail.com',
+                phone:'123456789',
+                type:'personal'
+            },
+            {
+                id:3,
+                name:'Jill Juk',
+                email:'Jill@gmail.com',
+                phone:'789456123',
+                type:'proffesional'
+            },
+            {
+                id:4,
+                name:'Gandhi',
+                email:'Gandhi@gmail.com',
+                phone:'784512963',
+                type:'proffesional'
+            }
+        ]
+    }
 
+    const [state,dispatch]= useReducer(contactReducer,initialState);
+
+    // Add contact//
+
+    //Delete contact//
+
+    //set current contact//
+
+    //clear current contact//
+
+    //update contact//
+
+    return(
+        <ContactContext.Provider value=
+            {{
+            contacts:state.contacts
+            }} 
+        >   
+
+            {props.children}
+
+        </ContactContext.Provider>
+    )
+
+}
+
+
+export default contactState;
