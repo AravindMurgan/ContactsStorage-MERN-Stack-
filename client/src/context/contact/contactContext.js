@@ -1,6 +1,6 @@
-import {Component, createContext} from 'react';
+import {createContext} from 'react';
 
-const contactcontext = createContext();
+const contactContext = createContext();
 
 export default contactContext;
 

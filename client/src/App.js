@@ -3,7 +3,8 @@ import React,{Fragment} from 'react'
 import { Navbar } from './component/layout/Navbar';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import About from './component/pages/About';
-import ContactState from './context/contact/contactState;'
+import ContactState from './context/contact/contactState';
+import Home from './component/pages/Home';
 import './App.css';
 
 function App() {
