@@ -16,7 +16,7 @@ import {
     CONTACT_ERROR
 } from '../type';
 
-const contactState = (props)=>{
+const ContactState = (props)=>{
     const initialState = {
         contacts:[
             {
@@ -77,4 +77,4 @@ const contactState = (props)=>{
 }
 
 
-export default contactState;
+export default ContactState;

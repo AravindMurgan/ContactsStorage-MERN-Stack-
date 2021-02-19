@@ -13,6 +13,7 @@ const Contacts = ()=>{
             {
                 contacts.map((contact)=>{
                     <h3>{contact.name}</h3>
+                   
                 })
             }
         </Fragment>
