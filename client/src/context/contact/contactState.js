@@ -38,14 +38,14 @@ const ContactState = (props)=>{
                 name:'Jill Juk',
                 email:'Jill@gmail.com',
                 phone:'789456123',
-                type:'proffesional'
+                type:'professional'
             },
             {
                 id:4,
                 name:'Gandhi',
                 email:'Gandhi@gmail.com',
                 phone:'784512963',
-                type:'proffesional'
+                type:'professional'
             }
         ]
     }

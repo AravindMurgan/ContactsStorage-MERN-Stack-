@@ -1,6 +1,7 @@
-import { contextsKey } from 'express-validator/src/base';
 import React ,{Fragment,useContext} from 'react';
 import ContactContext from '../../context/contact/contactContext';
+import ContactItem from '../contacts/ContactItem';
+
 
 
 const Contacts = ()=>{
@@ -11,10 +12,7 @@ const Contacts = ()=>{
     return(
         <Fragment>
             {
-                contacts.map((contact)=>{
-                    <h3>{contact.name}</h3>
-                   
-                })
+                contacts.map(contact => <ContactItem key={contact.id} contacts={contact}/>)
             }
         </Fragment>
     )
