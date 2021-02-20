@@ -27,6 +27,14 @@ export default (state, action) => {
 						
 					)
 					
+			}
+		case SET_CURRENT :
+			return{
+				current:action.payload
+			}
+		case CLEAR_CURRENT :
+			return{
+				current:null
 			}	
 		default:
 			return state;
