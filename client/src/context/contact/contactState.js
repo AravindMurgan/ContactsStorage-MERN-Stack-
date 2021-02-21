@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import ContactContext from './contactContext';
 import ContactReducer from './contactReducer';
+import ContactItem from '../../component/contacts/ContactItem'
 
 import {
 	GET_CONTACTS,
