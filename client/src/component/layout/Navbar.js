@@ -13,6 +13,8 @@ export const Navbar = ({title,icon}) => {
                 <li>
                     <Link to="/home">Home</Link>
                     <Link to="/about">About</Link>
+                    <Link to="/register">Regitser</Link>
+                    <Link to="/login">Login</Link>
                 </li>
             </ul>
         </div>
