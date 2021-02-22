@@ -14,7 +14,7 @@ import {
 	LOGOUT,
 	CLEAR_ERRORS,
 } from '../type';
-import { post } from '../../../../routes/auth';
+
 
 const AuthState = (props) => {
 	const initialState = {
@@ -28,7 +28,7 @@ const AuthState = (props) => {
 	const [state, dispatch] = useReducer(AuthReducer, initialState);
 
 	// Load User
-
+	const loadUser = () => console.log('loadUser');
 	// Regitser User
 	const register = async (formData) => {
 		const config = {
@@ -46,10 +46,12 @@ const AuthState = (props) => {
 		}
 	};
 	// Login User
-
+	const loginUser = () => console.log('loginUser');
 	//  Logout
+	const logoutUser = () => console.log('logoutUser');
 
 	// Clear Errors
+	const clearErrors = () => dispatch({type:CLEAR_ERRORS});
 
 	return (
 		<AuthContext.Provider
@@ -59,6 +61,11 @@ const AuthState = (props) => {
 				loading: state.loading,
 				user: state.user,
 				error: state.error,
+				register,
+				loadUser,
+				loginUser,
+				logoutUser,
+				clearErrors,
 			}}
 		>
 			{props.children}

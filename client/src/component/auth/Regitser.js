@@ -1,8 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+
 import AlertContext from '../../context/alert/alertContext';
+import AuthContext from '../../context/auth/authContext';
 
 const Regitser = () => {
 	const alertContext = useContext(AlertContext);
+	const authContext = useContext(AuthContext);
 	const [user, setUser] = useState({
 		name: '',
 		email: '',
@@ -10,6 +13,14 @@ const Regitser = () => {
 		password2: '',
 	});
 
+	const { register, error, clearErrors } = authContext;
+
+	useEffect(() => {
+		if (error === 'User already exists') {
+			setAlert(error, 'danger');
+			clearErrors();
+		}
+	}, [error]);
 	const { setAlert } = alertContext;
 
 	const { name, email, password, password2 } = user;
@@ -24,7 +35,11 @@ const Regitser = () => {
 		} else if (password !== password2) {
 			setAlert('Password does not match', 'danger');
 		} else {
-			console.log('Register Submit');
+			register({
+				name,
+				email,
+				password,
+			});
 		}
 	};
 
@@ -88,7 +103,7 @@ const Regitser = () => {
 				/>
 			</form>
 		</div>
-	)
+	);
 };
 
 export default Regitser;
