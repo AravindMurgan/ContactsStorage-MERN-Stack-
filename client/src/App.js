@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './component/pages/About';
 import Register from './component/auth/Regitser';
 import Login from './component/auth/Login';
-import Alerts from './component/layout/Alert';
+import Alert from './component/layout/Alert';
 import Home from './component/pages/Home';
 import './App.css';
 
@@ -19,7 +19,7 @@ function App() {
 					<Fragment>
 						<Navbar />
 						<div className='container'>
-							<Alerts />
+							<Alert/>
 							<Switch>
 								<Route exact path='/' component={Home} />
 								<Route exact path='/about' component={About} />

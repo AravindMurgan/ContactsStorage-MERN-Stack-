@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import AlertContext from '../../context/alert/alertContext';
 
-const Alert = () => {
+const Alerts = () => {
 	const alertContext = useContext(AlertContext);
+
 	return (
 		alertContext.alerts.length > 0 &&
 		alertContext.alerts.map((alert) => (
@@ -12,4 +13,5 @@ const Alert = () => {
 		))
 	);
 };
-export default Alert;
+
+export default Alerts;
