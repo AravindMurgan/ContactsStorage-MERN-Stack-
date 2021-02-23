@@ -6,11 +6,19 @@ import Register from './component/auth/Regitser';
 import Login from './component/auth/Login';
 import Alert from './component/layout/Alert';
 import Home from './component/pages/Home';
+import SetAuthToken from './utils/setAuthToken';
 import './App.css';
+
 
 import ContactState from './context/contact/contactState';
 import AuthState from './context/auth/authState';
 import AlertState from './context/alert/AlertState';
+
+
+if(localStorage.token){
+	SetAuthToken(localStorage.token)
+}
+
 
 function App() {
 	return (

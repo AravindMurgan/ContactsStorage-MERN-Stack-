@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
-const Regitser = () => {
+const Regitser = (props) => {
 	const alertContext = useContext(AlertContext);
 	const authContext = useContext(AuthContext);
 	const [user, setUser] = useState({
@@ -13,14 +13,18 @@ const Regitser = () => {
 		password2: '',
 	});
 
-	const { register, error, clearErrors } = authContext;
+	const { register, error, clearErrors, isAuthenticated } = authContext;
 
 	useEffect(() => {
+		if (isAuthenticated) {
+			props.history.push('/');
+		}
+
 		if (error === 'User already exists') {
 			setAlert(error, 'danger');
 			clearErrors();
 		}
-	}, [error]);
+	}, [error, isAuthenticated, props.history]);
 	const { setAlert } = alertContext;
 
 	const { name, email, password, password2 } = user;
