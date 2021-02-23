@@ -12,12 +12,12 @@ import {
 export default (state, action) => {
 	switch (action.type) {
 		case USER_LOADED:
-			return{
+			return {
 				...state,
-				...action.payload,
-				isAuthenticated:true,
-				loading:false,
-			}
+				user: action.payload,
+				isAuthenticated: true,
+				loading: false,
+			};
 		case REGISTER_SUCCESS:
 			localStorage.setItem('token', action.payload.token);
 			return {
@@ -38,10 +38,12 @@ export default (state, action) => {
 				user: null,
 				error: action.payload,
 			};
-		
+
 		case CLEAR_ERRORS:
-			return{
-				error : null
-			}
+			return {
+				error: null,
+			};
+		default:
+			throw new Error(`Unsupported type of: ${action.type}`);
 	}
 };

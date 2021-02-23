@@ -1,77 +1,51 @@
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const config = require('config');
-const { check, validationResult } = require('express-validator');
+import {
+	REGISTER_SUCCESS,
+	REGISTER_FAIL,
+	USER_LOADED,
+	AUTH_ERROR,
+	LOGIN_SUCCESS,
+	LOGIN_FAIL,
+	LOGOUT,
+	CLEAR_ERRORS,
+} from '../types';
 
-const User = require('../models/User');
-
-// @route     POST api/users
-// @desc      Regiter a user
-// @access    Public
-router.post(
-	'/',
-	[
-		check('name', 'Please add name').not().isEmpty(),
-		check('email', 'Please include a valid email').isEmail(),
-		check(
-			'password',
-			'Please enter a password with 6 or more characters'
-		).isLength({ min: 6 }),
-	],
-	async (req, res) => {
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(400).json({ errors: errors.array() });
-		}
-
-		const { name, email, password } = req.body;
-
-		try {
-			let user = await User.findOne({ email });
-
-			if (user) {
-				return res.status(400).json({ msg: 'User already exists' });
-			}
-
-			user = new User({
-				name,
-				email,
-				password,
-			});
-
-			const salt = await bcrypt.genSalt(10);
-
-			user.password = await bcrypt.hash(password, salt);
-
-			await user.save();
-
-			const payload = {
-				user: {
-					id: user.id,
-				},
+export default (state, action) => {
+	switch (action.type) {
+		case USER_LOADED:
+			return {
+				...state,
+				isAuthenticated: true,
+				loading: false,
+				user: action.payload,
 			};
-
-			jwt.sign(
-				payload,
-				config.get('jwtSecret'),
-				{
-					expiresIn: 360000,
-				},
-				(err, token) => {
-					if (err) throw err;
-					res.json({ token });
-				}
-			);
-		} catch (err) {
-			console.error(err.message);
-			res.status(500).send('Server Error');
-		}
+		case REGISTER_SUCCESS:
+		case LOGIN_SUCCESS:
+			localStorage.setItem('token', action.payload.token);
+			return {
+				...state,
+				...action.payload,
+				isAuthenticated: true,
+				loading: false,
+			};
+		case REGISTER_FAIL:
+		case AUTH_ERROR:
+		case LOGIN_FAIL:
+		case LOGOUT:
+			localStorage.removeItem('token');
+			return {
+				...state,
+				token: null,
+				isAuthenticated: false,
+				loading: false,
+				user: null,
+				error: action.payload,
+			};
+		case CLEAR_ERRORS:
+			return {
+				...state,
+				error: null,
+			};
+		default:
+			return state;
 	}
-);
-
-module.exports = router;
-
-
-///brad file///
+};
