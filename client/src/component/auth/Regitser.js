@@ -12,7 +12,8 @@ const Regitser = (props) => {
 		password: '',
 		password2: '',
 	});
-
+	
+	const { setAlert } = alertContext;
 	const { register, error, clearErrors, isAuthenticated } = authContext;
 
 	useEffect(() => {
@@ -25,7 +26,7 @@ const Regitser = (props) => {
 			clearErrors();
 		}
 	}, [error, isAuthenticated, props.history]);
-	const { setAlert } = alertContext;
+	
 
 	const { name, email, password, password2 } = user;
 
