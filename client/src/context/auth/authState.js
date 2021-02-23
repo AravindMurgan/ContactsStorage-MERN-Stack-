@@ -15,7 +15,6 @@ import {
 	CLEAR_ERRORS,
 } from '../type';
 
-
 const AuthState = (props) => {
 	const initialState = {
 		token: localStorage.getItem('token'),
@@ -48,10 +47,20 @@ const AuthState = (props) => {
 	// Login User
 	const loginUser = () => console.log('loginUser');
 	//  Logout
-	const logoutUser = () => console.log('logoutUser');
+	const logoutUser = async () => {
+		/// load user into global headers
+
+		try {
+			const res = await axios.get('api/auth');
+
+			dispatch({ type: USER_LOADED, payload: res.data });
+		} catch (error) {
+			dispatch({type:AUTH_ERROR})
+		}
+	};
 
 	// Clear Errors
-	const clearErrors = () => dispatch({type:CLEAR_ERRORS});
+	const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
 	return (
 		<AuthContext.Provider
