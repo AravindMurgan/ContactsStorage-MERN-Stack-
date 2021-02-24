@@ -12,7 +12,7 @@ import PrivateRoute from './component/routing/PrivateRoute';
 
 import ContactState from './context/contact/contactState';
 import AuthState from './context/auth/authState';
-import AlertState from './context/alert/alertState'
+import AlertState from './context/alert/AlertState';
 
 if (localStorage.token) {
 	SetAuthToken(localStorage.token);

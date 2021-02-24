@@ -5,7 +5,7 @@ import AlertReducer from './alertReducer';
 
 import { SET_ALERT, REMOVE_ALERT } from '../type';
 
-const alertState = (props) => {
+const AlertState = (props) => {
 	const initialState = [];
 
 	const [state, dispatch] = useReducer(AlertReducer, initialState);
@@ -33,4 +33,4 @@ const alertState = (props) => {
 	);
 };
 
-export default alertState;
+export default AlertState;
