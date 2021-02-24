@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ContactContext from '../../context/contact/contactContext';
 
 const ContactItem = ({ contacts }) => {
+	console.log(contacts)
 	const contactContext = useContext(ContactContext);
 	const { deleteContact,setCurrent } = contactContext;
 	const onDelete = () => {

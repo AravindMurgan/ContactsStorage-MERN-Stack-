@@ -23,6 +23,7 @@ const ContactState = (props) => {
 		current: null,
 		filtered:null
 	};
+	console.log(contacts)
 
 	const [state, dispatch] = useReducer(ContactReducer, initialState);
 
@@ -35,8 +36,7 @@ const ContactState = (props) => {
 			dispatch({ type: GET_CONTACTS, payload: res.data });
 
 		} catch (error) {
-			
-			dispatch({type: CONTACT_ERROR , payload: error.res.message})
+			dispatch({type: CONTACT_ERROR , payload: error.response.message})
 		}
 	}
 
@@ -52,13 +52,12 @@ const ContactState = (props) => {
 
 		try {
 			const res = await axios.post('/api/contacts',contact,config);
-			console.log(res);
 
 			dispatch({ type: ADD_CONTACT, payload: res.data });
 
 		} catch (error) {
 			
-			dispatch({type: CONTACT_ERROR , payload: error.res.message})
+			dispatch({type: CONTACT_ERROR , payload: error.response.message})
 		}
 
 		
