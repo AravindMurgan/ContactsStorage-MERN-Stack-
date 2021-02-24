@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ContactContext from '../../context/contact/contactContext';
 
 const ContactItem = ({ contacts }) => {
-	console.log(contacts)
+	
 	const contactContext = useContext(ContactContext);
 	const { deleteContact,setCurrent } = contactContext;
 	const onDelete = () => {
@@ -11,7 +11,7 @@ const ContactItem = ({ contacts }) => {
 	};
 
 	const { id, name, email, phone, type } = contacts;
-
+	
 	return (
 		<div className='card bg-light' style={{ borderRadius: '5px' }}>
 			<h3 className='text-primary text-left'>
@@ -30,13 +30,13 @@ const ContactItem = ({ contacts }) => {
 			<ul className='list'>
 				{email && (
 					<li>
-						<i className='fas fa-envelope-open'></i> {email}
+						<i  className='fas fa-envelope-open'/> {email}
 					</li>
 				)}
 
 				{phone && (
 					<li>
-						<i className='fas fa-phone'></i> {phone}
+						< i className='fas fa-phone'/> {phone}
 					</li>
 				)}
 			</ul>

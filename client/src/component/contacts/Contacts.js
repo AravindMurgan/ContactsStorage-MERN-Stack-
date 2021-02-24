@@ -8,10 +8,10 @@ const Contacts = () => {
 
 	const { contacts , filtered ,getContacts,loading} = contactContext;
 
-	useEffect(()=>{
-		getContacts();
-		//eslint-disable-next-line
-	},[]);
+	// useEffect(()=>{
+	// 	getContacts();
+	// 	//eslint-disable-next-line
+	// },[]);
 
 	return (
 		<Fragment>
