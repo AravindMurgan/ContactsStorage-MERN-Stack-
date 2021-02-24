@@ -1,4 +1,4 @@
-# Contact Keeper
+# Contact Storage Application
 
 > Full stack MERN contact manager with React hooks, context & JWT authentication.
 
