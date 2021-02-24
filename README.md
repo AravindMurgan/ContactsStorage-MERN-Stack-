@@ -1,16 +1,24 @@
-Contact Keeper
-Full stack MERN contact manager with React hooks, context & JWT authentication
-This is the full app. The API can be found here with documented endpoints
+# Contact Keeper
 
-Usage
+> Full stack MERN contact manager with React hooks, context & JWT authentication.
+
+## Usage
+
 Install dependencies
 
+```bash
 npm install
 npm client-install
-Mongo connection setup
+```
+
+### Mongo connection setup
+
 Edit your /config/default.json file to include the correct MongoDB URI
 
-Run Server
-npm run dev # Express & React :3000 & :5000
-npm run server # Express API Only :5000
-npm run client # React Client Only :3000
+### Run Server
+
+```bash
+npm run dev     # Express & React :3000 & :5000
+npm run server  # Express API Only :5000
+npm run client  # React Client Only :3000
+```
