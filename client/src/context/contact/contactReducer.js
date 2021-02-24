@@ -14,10 +14,10 @@ import {
 export default (state, action) => {
 	switch (action.type) {
 		case GET_CONTACTS:
-			return{
+			return {
 				...state,
-				contacts:action.payload,
-				loading:false
+				contacts: action.payload,
+				loading: false,
 			};
 
 		case ADD_CONTACT:
@@ -54,20 +54,28 @@ export default (state, action) => {
 			return {
 				...state,
 				filtered: state.contacts.filter((contact) => {
-					const regex = new RegExp(`${action.payload}`,'gi');
-					return (contact.name.match(regex) || contact.email.match(regex))
+					const regex = new RegExp(`${action.payload}`, 'gi');
+					return contact.name.match(regex) || contact.email.match(regex);
 				}),
 			};
 		case CLEAR_FILTER:
-			return{
+			return {
 				...state,
-				filtered:null
-			}
+				filtered: null,
+			};
 		case CONTACT_ERROR:
-			return{
+			return {
 				...state,
-				error:action.payload
-			}
+				error: action.payload,
+			};
+		case CLEAR_CONTACTS:
+			return {
+				...state,
+				contacts: null,
+				current: null,
+				filtered: null,
+				error: null
+			};
 		default:
 			throw new Error(`Unsupported type of: ${action.type}`);
 	}
